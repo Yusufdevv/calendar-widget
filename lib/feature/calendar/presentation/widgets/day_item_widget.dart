@@ -4,9 +4,11 @@ class DayItemWidget extends StatelessWidget {
   const DayItemWidget({
     super.key,
     required this.day,
+    required this.isSunday,
   });
 
   final int day;
+  final bool isSunday;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class DayItemWidget extends StatelessWidget {
       height: 50,
       alignment: Alignment.center,
       decoration: ShapeDecoration(
-        color: Colors.red,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(80),
         ),
@@ -22,8 +24,8 @@ class DayItemWidget extends StatelessWidget {
       child: Text(
         '$day',
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.black,
+        style: TextStyle(
+          color: isSunday ? const Color(0xFFFF5247) : Colors.black,
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),

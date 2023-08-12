@@ -36,7 +36,14 @@ class CalendarScreen extends StatelessWidget {
                         return Container();
                       }
                       final day = index - addedDay + 1;
-                      return DayItemWidget(day: day);
+                      final isSunday = MyFunctions.isSunday(DateTime(2023, 8, day));
+                      return GestureDetector(
+                        onTap: () {},
+                        child: DayItemWidget(
+                          day: day,
+                          isSunday: isSunday,
+                        ),
+                      );
                     },
                   )),
             )

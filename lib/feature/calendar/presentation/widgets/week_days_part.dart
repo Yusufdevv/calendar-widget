@@ -26,12 +26,11 @@ class WeekDaysPart extends StatelessWidget {
             child: Text(
               days[index],
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Color(0xFF6C7072),
+              style: TextStyle(
+                color: index == 6 ? const Color(0xFFFF5247) : const Color(0xFF6C7072),
                 fontSize: 14,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
-                height: 0.86,
               ),
             ),
           ),

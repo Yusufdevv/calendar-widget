@@ -36,4 +36,10 @@ class MyFunctions {
         return 0;
     }
   }
+
+  static bool isSunday(DateTime day) {
+    DateTime dateToCheck = day; // Tekshiriladigan kun
+
+    return dateToCheck.weekday == DateTime.sunday;
+  }
 }
