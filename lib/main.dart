@@ -1,3 +1,4 @@
+import 'package:calendar_widget/feature/calendar/presentation/calendar_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +10,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: const CalendarScreen(),
     );
   }
 }
