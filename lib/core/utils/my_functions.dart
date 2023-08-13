@@ -59,7 +59,7 @@ class MyFunctions {
       }
 
       if (!dayExists) {
-        allDays.add(DayModel(day: day, type: 100));
+        allDays.add(DayModel(day: day, type: 0));
       }
     }
 

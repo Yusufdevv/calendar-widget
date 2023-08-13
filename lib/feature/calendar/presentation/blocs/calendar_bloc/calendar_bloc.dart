@@ -15,16 +15,20 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     on<GetMonthDataEvent>((event, emit) async {
       emit(state.copyWith(status: CalendarStatus.loading));
       final result = await _getMonthDataUseCase.call(NoParams());
+
+      // get type event
+      add(GetTypesDataEvent());
+
       if (result.isRight) {
         emit(state.copyWith(status: CalendarStatus.success, date: result.right));
       } else {
         final failure = result.left;
         if (failure is ServerFailure) {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         } else if (failure is DioFailure) {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         } else {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         }
       }
     });
@@ -37,11 +41,11 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       } else {
         final failure = result.left;
         if (failure is ServerFailure) {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         } else if (failure is DioFailure) {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         } else {
-          emit(state.copyWith(status: CalendarStatus.loading));
+          emit(state.copyWith(status: CalendarStatus.failure));
         }
       }
     });

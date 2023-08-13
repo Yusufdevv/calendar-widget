@@ -19,10 +19,10 @@ class DayItemWidget extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-          padding: EdgeInsets.zero,
-          backgroundColor: dayColor,
-        ),
+            shape: const CircleBorder(),
+            padding: EdgeInsets.zero,
+            backgroundColor: dayColor,
+            elevation: dayColor == const Color(0xFFFFFFFF) ? 0 : 1),
         onPressed: onPressed,
         child: Text(
           '$day',
