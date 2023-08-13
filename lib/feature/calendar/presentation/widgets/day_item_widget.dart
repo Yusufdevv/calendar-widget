@@ -5,29 +5,33 @@ class DayItemWidget extends StatelessWidget {
     super.key,
     required this.day,
     required this.isSunday,
+    required this.dayColor,
+    required this.onPressed,
   });
 
   final int day;
   final bool isSunday;
-
+  final Color dayColor;
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
-      alignment: Alignment.center,
-      decoration: ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(80),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(),
+          padding: EdgeInsets.zero,
+          backgroundColor: dayColor,
         ),
-      ),
-      child: Text(
-        '$day',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: isSunday ? const Color(0xFFFF5247) : Colors.black,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+        onPressed: onPressed,
+        child: Text(
+          '$day',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: isSunday ? const Color(0xFFFF5247) : Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );

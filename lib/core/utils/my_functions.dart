@@ -1,3 +1,5 @@
+import 'package:calendar_widget/feature/calendar/data/models/day_model.dart';
+import 'package:calendar_widget/feature/calendar/data/models/type_model.dart';
 import 'package:intl/intl.dart';
 
 class MyFunctions {
@@ -41,5 +43,41 @@ class MyFunctions {
     DateTime dateToCheck = day; // Tekshiriladigan kun
 
     return dateToCheck.weekday == DateTime.sunday;
+  }
+
+  static List<DayModel> addOtherDays(List<DayModel> days, int monthTotolDay) {
+    List<DayModel> allDays = [];
+
+    for (int day = 1; day <= monthTotolDay; day++) {
+      bool dayExists = false;
+      for (var dayData in days) {
+        if (dayData.day == day) {
+          dayExists = true;
+          allDays.add(dayData);
+          break;
+        }
+      }
+
+      if (!dayExists) {
+        allDays.add(DayModel(day: day, type: 100));
+      }
+    }
+
+    return allDays;
+  }
+
+  static String getColorForType(List<TypeModel> typeModels, int inputType) {
+    if (typeModels.isEmpty) {
+      return "FFFFFF";
+    }
+    String color = "#FFFFFF"; // Agar mos kelmasa oq rang ga teng boladi
+
+    for (var typeModel in typeModels) {
+      if (typeModel.type == inputType) {
+        color = typeModel.color;
+        break;
+      }
+    }
+    return color.replaceAll("#", "");
   }
 }
