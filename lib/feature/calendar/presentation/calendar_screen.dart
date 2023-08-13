@@ -40,7 +40,29 @@ class CalendarScreen extends StatelessWidget {
                 );
               }
               if (state.status == CalendarStatus.failure) {
-                return const Center(child: Text('Something went wrong'));
+                return SizedBox(
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Something went wrong',
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                          onPressed: () {
+                            context.read<CalendarBloc>().add(GetMonthDataEvent());
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            side: const BorderSide(color: Colors.black),
+                          ),
+                          child: const Text('Try again!', style: TextStyle(color: Colors.black)))
+                    ],
+                  ),
+                );
               }
               return const SizedBox();
             },
