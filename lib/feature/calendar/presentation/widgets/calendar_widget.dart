@@ -33,7 +33,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     month = state.date?.month ?? DateTime.now().month;
 
     // "totalDaysNumber" =  berilgan oydagi umumiy kunlar soni
-    totalDaysNumber = MyFunctions.realTotalDaysOfMonth(year, month);
+    totalDaysNumber = MyFunctions.totalDaysOfMonth(year, month);
 
     // "addedDayNumber" kunlar ni besh qator joylashtirilganda 1-qatordaga kunsiz hafta kunlarini soni
     addedDayNumber = MyFunctions.addedDay(totalDaysNumber, year, month);

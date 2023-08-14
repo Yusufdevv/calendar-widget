@@ -3,12 +3,11 @@ import 'package:calendar_widget/feature/calendar/data/models/type_model.dart';
 import 'package:intl/intl.dart';
 
 class MyFunctions {
-  static int realTotalDaysOfMonth(int year, int month) {
+  static int totalDaysOfMonth(int year, int month) {
     DateTime firstDayOfMonth = DateTime(year, month, 1);
 
     DateTime lastDayOfMonth = DateTime(year, month + 1, 0);
 
-    // Birinchi kunni hisoblash
     int numberOfDaysInMonth = lastDayOfMonth.day - firstDayOfMonth.day + 1;
 
     return numberOfDaysInMonth;
